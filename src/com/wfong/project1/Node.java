@@ -127,13 +127,13 @@ public class Node{
 				buffer = input.readLine();
 				if (buffer.startsWith("terminate")) {
 					String termMessage = GlamourPrint.badString("Received termination signal!");
-					System.out.println(this.NodeName + ": " + termMessage);
+					System.out.println("\t" + this.NodeName + ": " + termMessage);
 					clientSocket.close();
 					break;
 				}
 				Messages.add(buffer);
-				String messageSig = ": " + GlamourPrint.goodString("Received: ") + buffer + "\"";
-				System.out.println(this.NodeName + messageSig);
+				String messageSig = ": " + GlamourPrint.goodString("Received: ")+ "\"" + buffer + "\"";
+				System.out.println("\t" + this.NodeName + messageSig);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -174,6 +174,7 @@ public class Node{
 			System.err.println(this.NodeName + ": Error! Could not close Socket: Socket is already closed...");
 		} else {
 			if(outputSocket.isConnected()) {
+				System.out.println("\t" + this.NodeName + ": "+ GlamourPrint.goodString("finished transmitting..."));
 				writeToSocket("terminate");
 				outputSocket.shutdownOutput();
 			}

@@ -116,6 +116,7 @@ public class RelayNode extends Node implements Runnable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		System.out.println(this.getNodeName() + ": exiting.");
 	}
 	
 }

@@ -60,5 +60,6 @@ public class ServerNode extends Node implements Runnable {
 	@Override
 	public void run() {
 		readSocket();
+		System.out.println(this.getNodeName() + ": exiting.");
 	}
 }

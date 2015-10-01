@@ -16,16 +16,13 @@ public class Test {
 		ServerNode server;
 		RelayNode relay;
 		SenderNode client;
-		try {
-			
-			Thread RelayThread = new Thread(relay  = new RelayNode("NodeB", "confB.txt"));
-			RelayThread.start();
-			Thread ServerThread = new Thread(server = new ServerNode("NodeC", "confC.txt"));
-			ServerThread.start();
-			Thread ClientThread = new Thread(client = new SenderNode("NodeA", "confA.txt"));
+		try {	
+			Thread ClientThread = new Thread(client = new SenderNode("Node A", "confA.txt"));
 			ClientThread.start();
-
-
+			Thread RelayThread = new Thread(relay  = new RelayNode("Node B", "confB.txt"));
+			RelayThread.start();
+			Thread ServerThread = new Thread(server = new ServerNode("Node C", "confC.txt"));
+			ServerThread.start();
 		} catch (NumberFormatException e) {
 			System.err.println("Error! Could not construct nodes, improper Config Files present");
 			e.printStackTrace();
@@ -33,7 +30,5 @@ public class Test {
 			System.err.println("Error! Could not find config files!");
 			e.printStackTrace();
 		}
-
 	}
-
 }

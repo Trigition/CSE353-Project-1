@@ -98,5 +98,6 @@ public class SenderNode extends Node implements Runnable {
 			System.err.println("Error in closing socket");
 			e.printStackTrace();
 		}
+		System.out.println(this.getNodeName() + ": exiting.");
 	}	
 }

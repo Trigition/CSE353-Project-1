@@ -43,7 +43,7 @@ public class GlamourPrint {
 		case "cyan":
 			return Color.ANSI_CYAN.getColor();
 		case "white":
-			return Color.ANSI_CYAN.getColor();
+			return Color.ANSI_WHITE.getColor();
 		default:
 			return "";
 		}
