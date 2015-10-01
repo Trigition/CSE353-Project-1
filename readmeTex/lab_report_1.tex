@@ -1,10 +1,11 @@
 %	PACKAGES AND DOCUMENT CONFIGURATIONS
 \documentclass{article}
-\setlength\parindent{0pt} % Removes all indentation from paragraphs
+%\setlength\parindent{0pt} % Removes all indentation from paragraphs
 
 \renewcommand{\labelenumi}{\alph{enumi}.} % Make numbering in the enumerate environment by letter rather than number (e.g. section 6)
 
-\usepackage{times} % Uncomment to use the Times New Roman font
+%\usepackage{times} % Uncomment to use the Times New Roman font
+\usepackage[utf8]{inputenc}
 \usepackage{listings}
 \usepackage{color}
 %----------------------------------------------------------------------------------------
@@ -38,25 +39,21 @@ Instructor: & Professor Hamdy Soliman % Instructor/supervisor
 %----------------------------------------------------------------------------------------
 
 \section{Compilation and Execution}
-\begin{description}
-\item[Compilation]
-To compile the project please run these commands:
-\begin{lstlisting}[language=bash, caption=Order and Description of Command for Compilation]
-#To compile please be in the base directory of the project: CSE353-Project-1
-#Run this command to compile Java files using Apache Ant
+\begin{lstlisting}
+#To compile please be in the project directory
+#Run Apache Ant
 ant
 
 #Optional Command
-#To generate configuration files (default ones are provided) run this python script
-./makeConfig.py [number of lines to generate] [character length in lines, default is 100]
+#To generate configuration files (default ones are provided)
+./makeConfig.py [# lines] [line length, default is 100]
 \end{lstlisting}
-\item[Execution]
-\begin{lstlisting}[language=bash, caption=To Execute Program]
-#This command requires that Java files have been compiled using Apache Ant
-java -jar wfong
-\end{lstlisting}
-\end{description}
 
+\begin{lstlisting}
+#To execute
+#This command requires that Java files have been compiled
+java -jar wfong_p1.jar
+\end{lstlisting}
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
@@ -64,6 +61,7 @@ java -jar wfong
 \section{File Descriptions}
 
 \begin{tabular}{|c|c|}
+\hline
 Filename & Purpose\\
 \hline \hline
 build.xml & This file is the Apache Ant build file\\
@@ -76,9 +74,9 @@ confB.txt & This is the configuration file for Node C\\
 \hline
 makeConfig.py & This python script generates configuration files for the nodes\\
 \hline
-readme.pdf & This readme\\
+readme.pdf & This is the readme\\
 \hline
-wfong\_p1.jar & This file is compiled project\\
+wfong\_p1.jar & This file is the compiled project\\
 \hline
 \end{tabular}
 
@@ -89,25 +87,26 @@ wfong\_p1.jar & This file is compiled project\\
 \section{Checklist}
 
 \begin{tabular}{|c|c|}
+\hline
 Feature & Status/Completion\\
 \hline \hline
-Project code has appropriate comments. & Complete
+Project code has appropriate comments. & Complete\\
 \hline
-The project compiles and builds without errors. & Complete
+The project compiles and builds without errors. & Complete\\
 \hline
-The program starts. & Complete
+The program starts. & Complete\\
 \hline
-Creates and runs all the threads or processes. & Complete
+Creates and runs all the threads or processes. & Complete\\
 \hline
-Loads the configuration files. & Complete.
+Loads the configuration files. & Complete.\\
 \hline
-Sends data through sockets. & Complete.
+Sends data through sockets. & Complete.\\
 \hline
-Receives data through sockets. & Complete.
+Receives data through sockets. & Complete.\\
 \hline
-Prints out received data. & Complete.
+Prints out received data. & Complete.\\
 \hline
-The program exits after sending/receiving data. & Complete.
+The program exits after sending/receiving data. & Complete.\\
 \hline
 \end{tabular}
 %----------------------------------------------------------------------------------------
