@@ -1,5 +1,5 @@
-<project name ="Project1" default="dist" basedir=".">
-	<description>Required description for xml file</description>
+<project name ="CSE353-Project-1" default="dist" basedir=".">
+	<description>This is the build file for CSE353 Project 1 </description>
 	<property name="src" location="src" />
 	<property name="build" location="bin" />
 	<property name="dist" location="." />

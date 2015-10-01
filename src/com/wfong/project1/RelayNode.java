@@ -94,19 +94,14 @@ public class RelayNode extends Node implements Runnable {
 	
 	@Override
 	public void run() {
-		List<String> relayMessage;
-		relayMessage = readSocket();
+		//Wait to receive messages...
+		readSocket();
+		//All messages received, parepare to transmit this node's messages
 		this.addOutputSocket(port, serverAddress);
-		//Wait to receive input
-		//Relay data to other Nodes
-		for (String s : relayMessage) {
-			//TODO Change to print output!
-			//writeToSocket(s);
-			System.out.println("Node received: " + s);
-		}
 		//Send message within this node's config file
 		try {
 			List<String> configMessage = readMessage();
+			System.out.println(this.getNodeName() + " is beginning transmission!");
 			for (String s : configMessage) {
 				writeToSocket(s);
 			}

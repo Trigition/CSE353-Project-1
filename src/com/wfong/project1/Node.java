@@ -4,6 +4,8 @@ import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.wfong.glamourPrint.GlamourPrint;
+
 
 /**
  * This class is the Node Superclass. It contains all the methods to receive and transmit data.
@@ -55,7 +57,9 @@ public class Node{
 	 * @param address The IP address associated with the socket (Right now is LocalHost)
 	 */
 	public void addOutputSocket(int port, InetAddress address) {
+		String portStr = GlamourPrint.colorString("blue", Integer.toString(port));
 		try {
+			System.out.println(this.NodeName + ": Is attempting connection on port: " + portStr);
 			this.outputSockets.add(new Socket(address, port));
 		} catch (UnknownHostException e) {
 			System.err.println(this.NodeName + ": Could not resolve IP!");
@@ -80,20 +84,28 @@ public class Node{
 	 */
 	@SuppressWarnings("resource")
 	private Socket acceptClient() {
+		//Check to see if the node is listening on a socket
 		if (!this.inputSocket.isBound()) {
 			System.err.println(this.NodeName + " Cannot accept call! Listening sockets do not exist!");
 			return null;
 		}
+		//Node is listening on a bounded socket
 		Socket clientSocket = new Socket();
+		//Try to establish a connection to the Client Node
 		while(!clientSocket.isBound()) {
 			try {
 				System.out.println(this.NodeName + " listening to connection requests...");
 				clientSocket = this.inputSocket.accept();
-				System.out.println(this.NodeName + ": Client accepted on Socket: " + clientSocket.toString());
+				//Client has been accepted!
+				String acceptMessage = GlamourPrint.goodString("Client accepted on Port ");
+				String localPort = GlamourPrint.colorString("blue", Integer.toString(clientSocket.getLocalPort()));
+				//Print to standard out
+				System.out.println(this.NodeName + ": " + acceptMessage + localPort);
 				//Connection to a client has now been established
 				return clientSocket;
 			} catch (SocketTimeoutException T){
-				System.out.println("Server listen timeout...");
+				//A timeout has occured
+				System.out.println(this.NodeName + ": Listen timeout...");
 			} catch (IOException e) {
 				e.printStackTrace();
 				break;
@@ -114,12 +126,14 @@ public class Node{
 			while(true) {
 				buffer = input.readLine();
 				if (buffer.startsWith("terminate")) {
-					System.out.println(this.NodeName + ": Received termination signal!");
+					String termMessage = GlamourPrint.badString("Received termination signal!");
+					System.out.println(this.NodeName + ": " + termMessage);
 					clientSocket.close();
 					break;
 				}
 				Messages.add(buffer);
-				System.out.println(this.NodeName + ": Received: \"" + buffer + "\"");
+				String messageSig = ": " + GlamourPrint.goodString("Received: ") + buffer + "\"";
+				System.out.println(this.NodeName + messageSig);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -167,6 +181,14 @@ public class Node{
 		}
 	}
 
+	/**
+	 * A getter for the Node's Name
+	 * @return A string representation of the Node's Name
+	 */
+	public String getNodeName() {
+		return this.NodeName;
+	}
+	
 	/**
 	 * This to string method allows easy print out of a Node.
 	 */
