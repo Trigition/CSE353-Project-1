@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
+import com.wfong.glamourPrint.GlamourPrint;
+
 /**
  * This class reads data from incoming client connections and prints it out to System out
  * @author William Fong
@@ -60,6 +62,6 @@ public class ServerNode extends Node implements Runnable {
 	@Override
 	public void run() {
 		readSocket();
-		System.out.println(this.getNodeName() + ": exiting.");
+		System.out.println(this.getNodeName() + ": " + GlamourPrint.badString("exiting."));
 	}
 }

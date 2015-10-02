@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.wfong.glamourPrint.GlamourPrint;
+
 /**
  * This class is for sending data to a server Node.
  * @author William Fong
@@ -98,6 +100,6 @@ public class SenderNode extends Node implements Runnable {
 			System.err.println("Error in closing socket");
 			e.printStackTrace();
 		}
-		System.out.println(this.getNodeName() + ": exiting.");
+		System.out.println(this.getNodeName() + ": " + GlamourPrint.badString("exiting."));
 	}	
 }

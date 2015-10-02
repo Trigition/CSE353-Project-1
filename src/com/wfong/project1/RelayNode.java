@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.wfong.glamourPrint.GlamourPrint;
+
 /**
  * This class relays data between client and server nodes (Acting as both)
  * @author William Fong
@@ -116,7 +118,7 @@ public class RelayNode extends Node implements Runnable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println(this.getNodeName() + ": exiting.");
+		System.out.println(this.getNodeName() + ": " + GlamourPrint.badString("exiting."));
 	}
 	
 }
